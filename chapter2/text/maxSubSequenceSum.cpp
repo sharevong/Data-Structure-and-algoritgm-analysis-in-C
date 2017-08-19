@@ -126,8 +126,8 @@ int main( int argc, char** argv )
 
 	// result = getMaxSequenceSum1( arr, size ) ;
 	// result = getMaxSequenceSum2( arr, size ) ;
-	// result = getMaxSequenceSum3( arr, 0, size-1 ) ;
-	result = getMaxSequenceSum4( arr, size ) ;
+	result = getMaxSequenceSum3( arr, 0, size-1 ) ;
+	// result = getMaxSequenceSum4( arr, size ) ;
 
 	printf( "the max sequence sum is %d\n", result ) ;	
 }
