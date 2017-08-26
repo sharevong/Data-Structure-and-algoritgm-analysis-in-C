@@ -54,6 +54,8 @@ void deleteList( List l )
 void printList( List l )
 {
 	if( !l )  return ;
+	
+	printf( "from head to tail:\n" ) ;
 	Position p = l->next ;
 	while( p )
 	{
@@ -61,6 +63,16 @@ void printList( List l )
 		p = p->next ;
 	}
 	printf( "\n" ) ;
+
+	printf( "from tail to head:\n" ) ;
+	p = l->next ;
+	while( p->next ) p = p->next ;
+	while( p->pre )
+	{
+		printf( "%d ", p->element ) ;
+		p = p->pre ;
+	}
+	printf( "\n" ) ;				
 }
 
 // swap p -> nextp
