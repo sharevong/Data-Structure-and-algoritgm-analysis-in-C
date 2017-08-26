@@ -3,12 +3,6 @@
 #include <assert.h>
 #include <stdio.h>
 
-struct Node
-{
-	ElementType element ;  // int
-	Position next ;
-} ;
-
 List makeEmpty( List l )
 {
 	deleteList( l ) ;  // 创建空链表时，l应为NULL或者一个已创建的链表，l未初始化指向随机位置时会coredump

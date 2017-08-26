@@ -5,11 +5,15 @@
 #ifndef LIST_HPP_
 #define LIST_HPP_
 
-struct Node ;  					// 节点
+typedef int ElementType ;       // 节点元素类型
+struct Node
+{   
+    ElementType element ;  // int
+    struct Node* next ;
+} ;
 typedef struct Node* pNode ;
 typedef pNode List ;			// 链表的头节点指针
 typedef pNode Position ;        // 链表的节点指针
-typedef int ElementType ;       // 节点元素类型
 
 // 创建空链表
 List makeEmpty( List l ) ;
