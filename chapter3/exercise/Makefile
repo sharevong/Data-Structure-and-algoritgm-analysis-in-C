@@ -1,7 +1,7 @@
 LinkList_Dir=../text/linkedList
 
 all:printList printLots swap1 swap2 intersection union addPoly multiPoly \
-	compute
+	compute joseph joseph2 findElement reverseList radixSort adjoinList
 
 printList:printList.cpp ../text/linkedList/list.cpp
 	g++ -g -O0 -o printList -I${LinkList_Dir} $^
@@ -30,6 +30,24 @@ multiPoly:multiPoly.cpp
 compute:compute.cpp
 	g++ -g -O0 -o compute $^
 
+joseph:joseph.cpp
+	g++ -g -O0 -o joseph $^
+
+joseph2:joseph2.cpp
+	g++ -g -O0 -o joseph2 $^
+
+findElement:findElement.cpp ../text/linkedList/list.cpp
+	g++ -g -O0 -o findElement -I${LinkList_Dir} $^
+
+reverseList:reverseList.cpp ../text/linkedList/list.cpp 
+	g++ -g -O0 -o reverseList -I${LinkList_Dir} $^
+
+radixSort:radixSort.cpp
+	g++ -g -O0 -o radixSort $^
+
+adjoinList:adjoinList.cpp
+	g++ -g -O0 -o adjoinList $^
+
 clean:
 	rm -rf printList
 	rm -rf printLots
@@ -40,3 +58,9 @@ clean:
 	rm -rf addPoly
 	rm -rf multiPoly
 	rm -rf compute
+	rm -rf joseph
+	rm -rf joseph2
+	rm -rf findElement
+	rm -rf reverseList
+	rm -rf radixSort
+	rm -rf adjoinList
