@@ -2,8 +2,7 @@
 * 3.3 通过调整指针交换单链表中的相邻元素
 *
 **************************************************/
-#include "list.hpp"
-#include <stdlib.h>
+#include "common.h"
 
 // prep -> p -> nextp
 // prep -> nextp -> p
@@ -18,14 +17,13 @@ void swap1( Position prep, Position p )
 
 int main( int argc, char** argv )
 {
-    List l = NULL ;
-    l = makeEmpty( l ) ;
+    List l = createList() ;
     for( int i = 10;i >= 1;i-- )
-        insert( i, l, l ) ;
+        insertList( l, i ) ;
     printList( l ) ;
 
-    Position prep = advance( l ) ;
-    Position p = advance( prep ) ;
+    Position prep = l->next ;
+    Position p = l->next->next ;
     swap1( prep, p ) ;
 
     printList( l ) ;

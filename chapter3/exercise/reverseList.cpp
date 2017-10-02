@@ -2,9 +2,7 @@
 * 3.12 反转单链表
 *  
 *********************************************/
-#include "list.hpp"
-#include <stdlib.h>
-#include <stdio.h>
+#include "common.h"
 
 // 单链表反转  l->A->B->C->NULL   NULL<-A<-B<-C<-l
 List reverseList( List l )
@@ -25,11 +23,9 @@ List reverseList( List l )
 
 int main( int argc, char** argv )
 {
-    List l = NULL ;       // l需要初始化为NULL,否则在makeEmpty时会core
-    l = makeEmpty( l ) ;  // 需要获取返回值，否则l会保持为NULL
-    Position p = l ;
+    List l = createList() ;
     for( int i = 0;i < 10;i++ )
-        insert( i, l, p ) ;
+        insertList( l, i ) ;
     printList( l ) ;
  
     l = reverseList( l ) ;    

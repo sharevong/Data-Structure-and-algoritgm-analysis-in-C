@@ -25,7 +25,8 @@ List createList()
     List l = (List)malloc( sizeof(struct Node) ) ;
     assert( l ) ;
     l->no = -1 ;
-    l->next = NULL ;   
+    l->next = NULL ;
+    return l ;
 }
 
 // 在链表尾部插入元素

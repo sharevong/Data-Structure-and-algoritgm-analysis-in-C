@@ -37,7 +37,8 @@ List insert( int x, List l, Position p )
     node->pre = p ;
     node->next = tmp ;
     if( tmp )  tmp->pre = node ;  // 需要注意当插入链表末尾时的情况
-    p->next = node ;            
+    p->next = node ;
+    return l ;
 }
 
 void deleteList( List l )

@@ -6,9 +6,7 @@
 * 即打印L中的第 1 3 4 6个元素
 *
 *********************************************/
-#include "list.hpp"
-#include <stdio.h>
-#include <stdlib.h>
+#include "common.h"
 
 void printLots( List l, List p )
 {
@@ -18,9 +16,9 @@ void printLots( List l, List p )
     while( pos1 )
     {
         pos1 = pos1->next ;
-        if( pos2 && ++count == pos2->element )
+        if( pos2 && ++count == pos2->no )
         {
-            printf( "%d ", pos1->element ) ;
+            printf( "%d ", pos1->no ) ;
             pos2 = pos2->next ;
         }
     }
@@ -29,21 +27,16 @@ void printLots( List l, List p )
 
 int main( int argc, char** argv )
 {
-    List l = NULL ;
-    l = makeEmpty( l ) ;
-    Position pos = l ;
-    for( int i = 10;i >= 1;i-- )  // 头插法，按降序插入，链表才会是升序
-        insert( i, l, pos ) ;
+    List l = createList() ;
+    for( int i = 10;i >= 1;i-- )
+        insertList( l, i ) ;
     printList( l ) ;
     
-    List p = NULL ;
-    p = makeEmpty( p ) ;
-    pos = p ;
-    insert( 19, p, pos ) ;   // 该值超过了链表L的长度，不会打印任何值
-    insert( 6, p, pos ) ;
-    insert( 4, p, pos ) ;
-    insert( 3, p, pos ) ;
-    insert( 1, p, pos ) ;
+    List p = createList() ;
+    int arr[] = { 19, 6, 4, 3, 1 } ;
+    int size = sizeof(arr) / sizeof(arr[0]) ;
+    for( int i = 0;i < size;i++ )
+       insertList( p, arr[i] ) ;
     printList( p ) ;
 
     printLots( l, p ) ;    
