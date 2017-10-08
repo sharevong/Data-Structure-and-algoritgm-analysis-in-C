@@ -1,6 +1,6 @@
 Programs=printList printLots swap1 swap2 intersection union addPoly multiPoly \
 			compute joseph joseph2 findElement reverseList radixSort adjoinList \
-			adjustList rmRepeat lazyDelete
+			adjustList rmRepeat lazyDelete balanceSymbol computePostfix infixPostfix
 
 all:$(Programs)
 
