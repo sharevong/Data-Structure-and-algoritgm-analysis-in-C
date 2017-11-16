@@ -1,0 +1,56 @@
+1、伸展树
+
+M次对树的操作最多花费时间M * logN
+摊还运行时间为logN
+
+当一个节点被访问时，经过旋转使其变为根
+
+旋转思路：
+
+单旋转，在被访问的节点和它的父节点之间进行单旋转，重复执行这个步骤，直到它变成根节点
+
+展开，
+假设访问节点为X，如果X的父节点为根节点，则旋转X和根节点即可；
+否则X具有父节点和祖父节点，假设父节点为P，祖父节点为G，根据X P G之间的左右关系有两种情形
+
+zig-zag 之字形 (对称情形同理)
+       G                      X                   P->Right = X->Left
+     /   \                  /   \                 G->Left = X->Right
+    P     d                P     G                X->Left = P
+   / \         ---->      / \   / \     --->      X->Right = G
+  a   X                  a   b c   d
+     / \
+    b   c
+zig-zig 一字形 (对称情形同理)
+       G                      X                   G->Left = P->Right
+     /   \                  /   \                 P->Left = X->Right
+    P     d                a     P                P->Right = G
+   / \        ---->             / \    --->       X->Right = P
+  X   c                        b   G 
+ / \                              / \
+a   b                            c   d
+
+2、树的遍历
+
+中序遍历：排序输出
+void PrintTree( SearchTree T )
+{
+   if( T != NULL )
+   {
+      PrintTree( T->Left ) ;
+      PrintElement( T->Element ) ;
+      PrintTree( T->Right ) ;
+   }
+}
+
+后序遍历：获取树的高度
+int Height( Tree T )
+{
+   if( T == NULL )
+      return -1 ;
+   return Max( Height( T->Left ), Height( T->Right ) ) + 1 ;
+}
+
+先序遍历
+
+层序遍历

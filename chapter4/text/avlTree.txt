@@ -1,0 +1,55 @@
+1、AVL树
+
+每个节点的左子树和右子树最多高度差1的二叉查找树
+
+最少节点数 S(h) = S(h-1) + S(h-2) + 1
+高度为h的avl树 左子树右子树一个高度为h 一个高度为h-1 加上根节点
+
+2、插入导致不平衡的情形
+
+假设需要重新平衡的节点为a
+a的左儿子的左子树进行插入 -- 单旋转
+a的左儿子的右子树进行插入 -- 双旋转
+a的右儿子的左子树进行插入 -- 双旋转
+a的右儿子的右子树进行插入 -- 单旋转
+
+3、单旋转，旋转后需要更新树高度
+
+k2的左儿子的左子树插入a (k2的父节点需要更新儿子节点为k1)
+      k2                  k1                k1 = k2->left
+     /  \                /  \               k2->left = k1->right 
+    k1   z              x    k2             k1->right = k2
+   /  \       ---->    /     / \    ---->
+  x    y              a     y   z
+ /
+a  
+
+k1的右儿子的右子树插入a (k1的父节点需要更新儿子节点为k2)
+     k1                       k2             k2 = k1->right
+    /  \                     /  \            k1->right = k2->left
+   x    k2                  k1   z           k2->left = k1
+       /  \      --->      /  \   \    --->
+      y    z              x    y   a
+            \
+             a
+
+4、双旋转( 可以看成是两次单旋转)
+
+k3左儿子的右子树插入c（插入k2的左子树或右子树是相同的）
+        k3                   k2             k1 = k3->left    
+       /  \                 /  \            k2 = k1->right
+      k1   b               k1   k3          k1->right = k2->right(或者k2->left,与c的位置有关)
+     /  \        --->     /  \   \    --->  k2->left = k1 
+    a    k2              a    c   b         k2->right = k3
+          \                                 或者
+           c                                k3->left = singleRotate( k3->left ) k3->left变成k2
+                                            k3 = singleRotate( k3 )             k3变成k2
+
+k1右儿子的左子树插入c
+      k1                    k2              k1->right = singleRotate( k1->right )
+     /  \                  /  \             k1 = singleRotate( k1 )
+    a    k3               k1  k3  
+        /  \    --->     / \    \    --->   
+       k2   b           a   c    b
+      /
+     c

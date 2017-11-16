@@ -71,7 +71,6 @@ int isLast( Position p, List l )
 	return cursorSpace[p].next == 0 ;	
 }
 
-
 Position find( ElementType x, List l )
 {
 	assert( l ) ;

@@ -1,0 +1,69 @@
+1、深度和高度
+
+节点的深度为根节点到该节点的路径长度
+因此根节点的深度为0，根节点的儿子的深度为1
+树的深度为与根节点最远的叶子节点的深度
+
+节点的高度为该节点到树叶节点的路径长度
+因此叶子节点的高度为0，叶子节点的父节点的高度为1
+树的高度为根节点的高度
+
+树的深度 == 树的高度
+
+2、树的节点声明
+
+typedef struct TreeNode* PtrToNode 
+struct TreeNode
+{
+   ElementType Element ;  // 节点数据
+   PtrToNode   FirstChild ;  // 节点的第一个儿子节点
+   PtrToNode   NextSibling ;  // 节点的兄弟节点
+}
+
+假设树的结构如下图:  则
+
+A -> B               A 节点的FirstChild = B, NextSibling = NULL
+  -> C               B 节点的FirstChild = NULL, NextSibling = C
+  -> D -> H          C 节点的FirstChild = NULL, NextSibling = D
+  -> E -> I          D 节点的FirstChild = H, NextSibling = E
+       -> J -> P     其他节点同理
+            -> Q     因此通过FirstChild和NextSibling指针可以将
+  -> F -> K。        树的所有节点链接起来
+       -> L
+       -> M
+  -> G -> N
+
+3、列出文件目录中所有文件例程,先序遍历
+
+static void ListDir( DirectoryOrFile D, int Depth )
+{
+   if( D is a legitimate entry )  // 递归终止条件 null
+   {
+      PrintName( D, Depth ) ;  // 首先打印当前文件名，先序遍历
+      if( D is a directory )   // 如果D是目录，递归打印目录下文件，深度加1
+      {
+         for each child C of D
+            ListDir( C, Depth + 1 ) ;
+      }
+   }
+}
+void ListDirectory( DirectoryOrFile D )
+{
+   ListDir( D, 0 ) ;
+}
+
+4、计算目录占用的磁盘区块总大小例程,后序遍历
+
+static void SizeDirectory( DirectoryOrFile D )
+{
+   int TotalSize ;  // 总大小，返回结果
+   TotalSize = 0 ;
+   if( D is a legitimate entry )  // 递归终止条件 null
+   {
+      TotalSize = FileSize( D ) ;  // 总大小赋值为当前文件大小
+      if( D is a directory )   // 如果D是目录，递归处理目录下文件，累加到结果中
+         for each child C of D
+            TotalSize += SizeDirectory( C ) ;
+   }
+   return TotalSize ;
+}
