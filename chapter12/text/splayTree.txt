@@ -1,0 +1,41 @@
+自顶向下伸展树
+
+L表示左子树最大节点 R表示右子树最小节点(不包含以X为父节点的节点)
+
+单旋转
+
+L     X     R          L    Y      R            R->Left = X
+     / \                   / \    /             R = X  
+    Y   a        --->     b   c  X         ---> X = X->Left
+   / \                            \ 
+  b   c                            a
+
+一字型旋转
+
+L        X      R          L    Z      R         X = singleRotateWithLeft( X )
+        / \                    / \    /            (X changes to Y)
+       Y   a                  c   d  Y           R->Left = X
+      / \           --->              \     ---> R = X 
+     Z   b                             X         X = X->Left
+    / \                               / \
+   c   d                             b   a
+
+之字形旋转
+
+L      X       R           L      Z      R       一次左单旋转
+      / \                   \    / \    /        一次右单旋转
+     Y   a         ---->     Y  c   d  X    ---> 
+    / \                     /           \
+   b   Z                   b             a
+      / \
+     c   d
+
+对称情况处理同以上处理相同
+
+最后将L R X连接成一棵树(此时X节点作为最终的根节点)
+
+L      X      R                X             R->Left = X->Right
+      / \          --->      /   \     --->  L->Right = X->Left
+     a   b                  L     R          X->Left = L
+                             \   /           X->Right = R
+                              a b
