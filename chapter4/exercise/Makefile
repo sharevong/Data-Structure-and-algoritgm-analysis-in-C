@@ -1,4 +1,4 @@
-Programs=testBSTree testInsertDelete checkBalance leastNodes testAvlTree insertAvlTreeNonRecursive deleteAvlTree doubleRotateReal testSplayTree testSplayTree1
+Programs=testBSTree testInsertDelete checkBalance leastNodes testAvlTree insertAvlTreeNonRecursive deleteAvlTree doubleRotateReal testSplayTree testSplayTree1 getNodeNum testTreeTime makeRandomTree makeAvlTree
 
 all:$(Programs)
 

@@ -29,7 +29,7 @@ int main( int argc, char** argv )
    printTree( t, 0 ) ;
    printf( "1-1024 splayTree InnerLen: %d\n", getInnerLen( t, 0 ) ) ;
   
-   for( int i = 1;i <= 1;i++ )
+   for( int i = 1;i <= 7;i++ )
    {
       t = findTree( t, i ) ;
       printTree( t, 0 ) ; 

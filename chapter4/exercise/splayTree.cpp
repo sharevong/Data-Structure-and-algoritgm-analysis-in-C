@@ -135,6 +135,8 @@ splayTree splay( splayTree t, int x )
             break ;
          if( x < t->left->element )  // 当出现一字形时，需要单旋转更新节点
             t = singleRotateWithLeft( t ) ;
+         if( t->left == NULL )  // 单旋转后需要判断，否则t会变成null，最后连接出错
+            break ;
          rightMin->left = t ;  // 第一次执行时 header.left指向R初始位置
          rightMin = t ;      // 将节点放入R中，并且新加入的节点是R中最小的
          t = t->left ;   // 继续向下遍历
@@ -145,6 +147,8 @@ splayTree splay( splayTree t, int x )
             break ;
          if( x > t->right->element )
             t = singleRotateWithRight( t ) ;
+         if( t->right == NULL )
+            break ;
          leftMax->right = t ;  // 第一次执行时 header.right指向L初始位置
          leftMax = t ;
          t = t->right ;
